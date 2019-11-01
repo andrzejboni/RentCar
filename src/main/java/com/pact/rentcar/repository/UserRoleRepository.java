@@ -1,13 +1,13 @@
 package com.pact.rentcar.repository;
 
-import com.pact.rentcar.model.UserRole;
+import com.pact.rentcar.model.AppUserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
+public interface UserRoleRepository extends JpaRepository<AppUserRole, Long> {
 
-    Optional<UserRole> findByName(String name);
+    Optional<AppUserRole> findByName(String name);
 }
