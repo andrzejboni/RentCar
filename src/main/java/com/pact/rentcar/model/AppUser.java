@@ -18,28 +18,11 @@ public class AppUser {
 
 	private String username;
 	private String password;
+	private String firstName;
+	private String lastName;
+	private String phone;
 
 	@ManyToMany(fetch = FetchType.EAGER) //oznacza pobieranie natychmiastowe
 	private Set<UserRole> roles;
 
 }
-
-
-//public class AppUser {
-//
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Long id;
-//
-//	private String name;
-//	private String surname;
-//	private String login;
-//	private String password;
-//	private String email;
-//	private String phone;
-//
-//
-//	@ManyToMany(fetch = FetchType.EAGER) //EAGER oznacza pobieranie natychmiastowe
-//	private Set<UserRole> userrole;
-//
-//}
