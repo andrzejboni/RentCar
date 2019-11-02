@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Stars  {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private Long vehicleId;

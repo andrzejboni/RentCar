@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class VehicleParameters{
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long vehicleID;
 
 	private String bodytype;

@@ -2,10 +2,7 @@ package com.pact.rentcar.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -18,7 +15,7 @@ import java.io.Serializable;
 public class Location {
 
 	@Id
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String country;

@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class VehicleStatus {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String vehicleStatCode;
 
 	private String description;

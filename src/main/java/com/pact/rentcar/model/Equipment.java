@@ -19,7 +19,7 @@ import java.util.List;
 public class Equipment  {
 
 	@Id
-	@Column(name = "equipmentCode")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Size(max = 3)
 	private String equipmentCode;
 
