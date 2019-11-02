@@ -28,4 +28,7 @@ public class VehicleParameters {
     private String photoName;
     private String description;
 
+    @ManyToOne
+    Vehicle vehicle;
+
 }

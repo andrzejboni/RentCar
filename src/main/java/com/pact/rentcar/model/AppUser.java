@@ -3,6 +3,7 @@ package com.pact.rentcar.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -25,4 +26,6 @@ public class AppUser {
 	@ManyToMany(fetch = FetchType.EAGER) //oznacza pobieranie natychmiastowe
 	private Set<UserRole> roles;
 
-}
+
+	}
+

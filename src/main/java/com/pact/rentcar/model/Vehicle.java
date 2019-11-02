@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -27,4 +24,9 @@ public class Vehicle {
     private String model;
     private BigDecimal dailyFee;
 
+    @ManyToOne
+    Location location;
+
+    @ManyToOne
+    VehicleStatus vehicleStatus;
 }
