@@ -36,6 +36,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     private void createInitialUsers() {
         addUser("admin", "admin", "Andrzej", "PinkFloyd", "888777555", "ROLE_USER", "ROLE_ADMIN");
+        addUser("user", "user", "Roger", "Waters", "333000888", "ROLE_USER");
     }
 
     private void addUser(String username, String password, String firstName, String lastName, String phone, String... roles) {
