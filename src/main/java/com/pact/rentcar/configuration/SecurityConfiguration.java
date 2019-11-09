@@ -23,13 +23,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest()
-                .permitAll();
+        http.csrf().disable()
+                .authorizeRequests()// 03/18:52
+                .antMatchers(
+                        "/",
+                        "/register",
+                        "/login",
+                        "cars").permitAll() // 03 - 23:47 strony do których wszyscy mają dostep
+
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**","/order/**").hasRole("USER")
+                .and().formLogin().loginPage("/login") // 03/13:59
+                .defaultSuccessUrl("/").permitAll()
+
+                .and()
+                .logout().logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/login")
+                .permitAll();  // 03/31:06
     }
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(){
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provier = new DaoAuthenticationProvider();
         provier.setPasswordEncoder(passwordEncoder);
         provier.setUserDetailsService(appUserAuthenticationService); // podajemy klasę w której jest odpowiwedzialne logowanie
@@ -41,9 +57,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception { // 02  12:20
         auth.authenticationProvider(daoAuthenticationProvider());
     }
-
-
-
 
 
 }

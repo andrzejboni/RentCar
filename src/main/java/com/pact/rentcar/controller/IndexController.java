@@ -8,6 +8,15 @@ public class IndexController {
     @GetMapping("/")
     public String getIndex(){
         return "index"; // zwrócimy index.html w templates
+
     }
+
+    @GetMapping("/cars")
+    public String getCars(){
+        return "cars";
+
+    }
+
+
 
 }

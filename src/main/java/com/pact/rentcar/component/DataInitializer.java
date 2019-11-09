@@ -1,6 +1,7 @@
 package com.pact.rentcar.component;
 
 
+import com.pact.rentcar.configuration.SecurityConfiguration;
 import com.pact.rentcar.model.AppUser;
 import com.pact.rentcar.model.UserRole;
 import com.pact.rentcar.repository.AppUserRepository;
@@ -8,8 +9,10 @@ import com.pact.rentcar.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.security.Security;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -22,6 +25,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Autowired
     private UserRoleRepository userRoleRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -53,7 +59,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         if (!searchedAppUser.isPresent()) {
             AppUser appUser = AppUser.builder()
                     .username(username)
-                    .password(password)
+                    .password(passwordEncoder.encode(password))
                     .firstName(firstName)
                     .lastName(lastName)
                     .phone(phone)
