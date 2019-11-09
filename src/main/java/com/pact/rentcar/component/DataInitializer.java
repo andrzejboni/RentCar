@@ -46,7 +46,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addUser(String username, String password, String firstName, String lastName, String phone, String... roles) {
-        Set<UserRole> userRoles = new HashSet<>();  // towrzymy niepowtarzalnego seta
+        Set<UserRole> userRoles = new HashSet<>();
         for (String role : roles) { // dodajemy doń wszystkie role jakie tylko zostały stworzone(moze byc ich wiecej niz 1)
             Optional<UserRole> singleRole = userRoleRepository.findByName(role);
             if (singleRole.isPresent()) {

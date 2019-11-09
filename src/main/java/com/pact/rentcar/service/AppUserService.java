@@ -17,6 +17,9 @@ public class AppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
+    @Autowired
+    private UserRoleService userRoleService;
+
     public Optional<AppUser> register(RegisterUserRequest registerUserRequest) {
         Optional<AppUser> optionalAppUser = appUserRepository.findByUsername(registerUserRequest.getUsername());
         if (optionalAppUser.isPresent()) {
@@ -31,6 +34,8 @@ public class AppUserService {
         appUser.setLastName(registerUserRequest.getLastName());
         appUser.setPhone(registerUserRequest.getPhone());
 
+        appUser.setRoles(userRoleService.getDefaultUserRoles());
 
+        return Optional.of(appUserRepository.save(appUser));
     }
 }
