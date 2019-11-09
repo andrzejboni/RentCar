@@ -29,7 +29,7 @@ public class AppUserService {
 
         AppUser appUser = new AppUser();
         appUser.setUsername(registerUserRequest.getUsername());
-        appUser.setPassword(registerUserRequest.getPassword());
+        appUser.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
         appUser.setFirstName(registerUserRequest.getFirstName());
         appUser.setLastName(registerUserRequest.getLastName());
         appUser.setPhone(registerUserRequest.getPhone());
