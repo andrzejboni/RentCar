@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/",
                         "/register",
                         "/login",
-                        "cars").permitAll() // 03 - 23:47 strony do których wszyscy mają dostep
+                        "vehicle").permitAll() // 03 - 23:47 strony do których wszyscy mają dostep
 
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**","/order/**").hasRole("USER")

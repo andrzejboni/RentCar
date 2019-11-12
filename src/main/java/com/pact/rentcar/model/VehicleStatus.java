@@ -16,8 +16,7 @@ public class VehicleStatus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String vehicleStatCode;
 
-    //	private String description;
-    private String woda;
+    private boolean available;
 
 
 

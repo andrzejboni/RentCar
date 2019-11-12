@@ -28,6 +28,7 @@ public class UserRoleService {
                 userRoles.add(singleRole.get());
             }
         }
+
         return userRoles;
     }
 }
