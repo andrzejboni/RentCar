@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <th:block th:include="template :: scripts_css"/>
+
+    <title>Admin vehicle form</title>
 </head>
 <body>
+<th:block th:include="template :: navigator"/>
+<th:block th:include="template :: messageBox"/>
+<h2>Adding vehicle form:</h2>
 
+
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form th:href="@{/vehicleForm}" method="post" th:object="${formObject}">
+            <div class="form-group">
+                <label for="registration">Registration</label>
+                <input type="text" class="form-control" name="registration" id="registration" th:field="*{registration}" aria-describedby="registrationHelp"
+                       placeholder="Enter registration">
+            </div>
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input type="text" class="form-control" name="brand" id="brand" th:field="*{brand}" placeholder="Enter brand of vehicle">
+            </div>
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" name="model" id="model" th:field="*{model}" placeholder="Enter model type">
+            </div>
+            <div class="form-group">
+                <label for="dailyFee">Daily Fee</label>
+                <input type="number" class="form-control" name="dailyFee" id="dailyFee" th:field="*{dailyFee}" placeholder="Enter daile fee">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>

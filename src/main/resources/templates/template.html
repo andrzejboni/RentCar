@@ -19,7 +19,7 @@
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/vehicle}">Vehicle list</a>
             <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/user/profile}">Profile</a>
-            <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/admin}">Admin Panel</a>
+            <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/vehicleForm}">Admin Panel</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Best offers</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">About us</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Contact</a>
@@ -43,13 +43,12 @@
 
 
 
-
-
-
 <th:block th:fragment="messageBox">
     <div class="message" th:if="${message}">
         <p th:text="${message}"></p>
     </div>
 </th:block>
+
+
 
 </html>

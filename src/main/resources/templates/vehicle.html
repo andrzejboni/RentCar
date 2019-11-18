@@ -12,6 +12,98 @@
 <th:block th:include="template :: navigator"/>
 <h2>Cars to rent:</h2>
 
+<!--<div class="container">-->
+<!--    <div sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="row">-->
+<!--        <div class="offset-10 col-2">-->
+<!--            <a th:href="@{/admin/mleko/zupa/woda}">Add New Pizza</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row header">-->
+<!--        <div class="col-1">Id.</div>-->
+<!--        <div class="col-3">Name</div>-->
+<!--        <div class="col-2">Price</div>-->
+<!--        <div class="col-4">Ingredients</div>-->
+<!--&lt;!&ndash;        <div th:if="${loggedIn}" class="col-2">Actions</div>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="row table-row" th:each="pizza,i : ${pizzas}">-->
+<!--        <div class="col-1" th:text="${pizza.id}"></div>-->
+<!--        <div class="col-3" th:text="${pizza.name}"></div>-->
+<!--        <div class="col-2" th:text="${pizza.price}"></div>-->
+<!--        </div>-->
+<!--        <div th:if="${loggedIn}" class="col-2">-->
+<!--            <a th:href="@{'/addPizzaToCart/' + ${pizza.id}}">Add</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!-- START THE FEATURETTES -->
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading">Renault Kangur <span class="text-muted">Szybki jak szczała</span>
+        </h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+            commodo.</p>
+    </div>
+    <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+             height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
+             role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#eee"></rect>
+            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+            commodo.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+             height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
+             role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#eee"></rect>
+            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+            commodo.</p>
+    </div>
+    <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+             height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
+             role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#eee"></rect>
+            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<!-- /END THE FEATURETTES -->
+
+</div>
+
+
 <th:block th:include="template :: scripts_js"/>
 </body>
 </html>
