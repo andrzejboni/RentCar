@@ -10,9 +10,7 @@ public class AddVehicleRequest {
     private String registration;
     private String brand;
     private String model;
-    private BigDecimal dailyFee;
-
-
+    private Double dailyFee;
 
 
 }

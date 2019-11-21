@@ -11,6 +11,7 @@ import com.pact.rentcar.repository.VehicleStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -65,6 +66,10 @@ public class VehicleService {
 
     public Optional<Vehicle> getVehicleByID(Long vehicleID) {
         return vehicleRepository.findById(vehicleID);
+    }
+
+    public List<Vehicle> getAllVehicles() {
+        return vehicleRepository.findAll();
     }
 
 

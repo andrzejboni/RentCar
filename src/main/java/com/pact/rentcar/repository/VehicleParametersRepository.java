@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface VehicleParametersRepository extends JpaRepository<VehicleParameters, Long> {
-    Optional<VehicleParametersRepository> findByVehicleID(Long vehicleID);
+    Optional<VehicleParameters> findByVehicleID(Long vehicleID);
 
 
 }

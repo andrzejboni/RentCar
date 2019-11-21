@@ -21,7 +21,7 @@ public class Booking {
 
     private Timestamp recipeDate;
     private Timestamp returnDate;
-    private BigDecimal totalCost;
+    private Double totalCost;
 
     @ManyToOne
     AppUser appUser;
