@@ -70,22 +70,37 @@
  * Extra utilities
  */
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
 .flex-equal > * {
     -ms-flex: 1;
-    -webkit-box-flex: 1;
     flex: 1;
 }
+
 @media (min-width: 768px) {
     .flex-md-equal > * {
         -ms-flex: 1;
-        -webkit-box-flex: 1;
         flex: 1;
     }
 }
 
 .overflow-hidden { overflow: hidden; }
+
+.table-row:nth-child(odd) {
+    background-color: #e7e9fc;
+}
+
+.table-row:nth-child(odd):hover {
+    background-color: #aaacbf;
+}
+
+.table-row:nth-child(even) {
+    background-color: #d8813b;
+    color:#ffffff;
+}
+
+.table-row:nth-child(even):hover {
+    background-color: #a1562f;
+    color:#ffffff;
+}
+.header{
+    background-color: #ffa043;
+}

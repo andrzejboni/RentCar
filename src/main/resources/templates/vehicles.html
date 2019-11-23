@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="template :: scripts_css"/>
+
+    <title >RentCar - Vehicle list</title>
+</head>
+<body>
+<th:block th:include="template :: navigator"/>
+<th:block th:include="template :: messageBox"/>
+<h2>Cars to rent:</h2>
+
+<div class="container">
+    <div sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="row">
+        <div class="offset-10 col-2">
+            <a th:href="@{/admin/vehicle}">Add New Vehicle</a>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="col-1"><b>Id</b></div>
+        <div class="col-2"><b>Registration</b></div>
+        <div class="col-2"><b>Brand</b></div>
+        <div class="col-2"><b>Model</b></div>
+        <div class="col-2"><b>Daily fee</b></div>
+        <div th:if="${loggedIn}" class="col-2"><b>Actions</b></div>
+    </div>
+    <div class="row table-row" th:each="vehicle,i : ${vehicles}">
+        <div class="col-md-1" th:text="${vehicle.id}"></div>
+        <div class="col-md-2" th:text="${vehicle.registration}"></div>
+        <div class="col-md-2" th:text="${vehicle.brand}"></div>
+        <div class="col-md-2" th:text="${vehicle.model}"></div>
+        <div class="col-md-2" th:text="${vehicle.dailyFee}"></div>
+        <div th:if="${loggedIn}" class="col-2"> <a th:href="@{/}"><b>Rent</b></a></div>
+    </div>
+</div>
+
+<th:block th:include="template :: scripts_js"/>
+</body>
+</html>

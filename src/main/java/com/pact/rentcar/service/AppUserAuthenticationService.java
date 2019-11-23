@@ -3,6 +3,7 @@ package com.pact.rentcar.service;
 import com.pact.rentcar.model.AppUser;
 import com.pact.rentcar.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,4 +46,21 @@ public class AppUserAuthenticationService implements UserDetailsService {
         }
         throw new UsernameNotFoundException("Username could not be found.");
     }
+
+
+    public Optional<AppUser> getLoggedInUser(){
+        if (SecurityContextHolder.getContext().getAuthentication() == null ||
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null ||
+                !SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+            // nie jesteśmy zalogowani
+            return Optional.empty();
+        }
+
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return appUserRepository.findByUsername(user.getUsername());
+        }
+        return Optional.empty();
+    }
+
 }

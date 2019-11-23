@@ -17,7 +17,7 @@
     <nav class="site-header sticky-top py-1">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
-            <a class="py-2 d-none d-md-inline-block" th:href="@{/vehicle}">Vehicle list</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/vehicles}">Vehicle list</a>
             <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/user/profile}">Profile</a>
             <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/vehicleForm}">Admin Panel</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Best offers</a>
@@ -36,7 +36,7 @@
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p>&copy; Bootstrap Curabitur aliquet quam id dui posuere blandit aliquet quam id dui </p>
     </div>
 </footer>
 </th:block>

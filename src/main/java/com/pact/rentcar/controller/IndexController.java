@@ -11,12 +11,4 @@ public class IndexController {
 
     }
 
-    @GetMapping("/vehicle")
-    public String getCars(){
-        return "vehicle";
-
-    }
-
-
-
 }
