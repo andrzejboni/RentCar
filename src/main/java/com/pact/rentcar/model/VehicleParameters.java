@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class VehicleParameters {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long vehicleID;
+    private Long id;
 
     private String bodytype;
     private Integer productionYear;

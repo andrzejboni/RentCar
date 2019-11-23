@@ -17,13 +17,10 @@ import java.util.stream.Collectors;
 // danej klasy musi utworzyć beana i nadać mu id takie jak nazwa klasy tylko małą literą.Taki bean może być wstrzykiwany adnotacyjnie
 // czy też xml-owo do innych beanów.Omijamy w ten sposób potrzebę definiowania Bean w konfiguracji xml
 
-
 @Service
 public class AppUserAuthenticationService implements UserDetailsService {
 
 // film 02 - 6:16
-
-
     @Autowired
     private AppUserRepository appUserRepository;
 

@@ -10,7 +10,6 @@ import com.pact.rentcar.repository.VehicleRepository;
 import com.pact.rentcar.repository.VehicleStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -64,13 +63,11 @@ public class VehicleService {
         return Optional.empty();
     }
 
-    public Optional<Vehicle> getVehicleByID(Long vehicleID) {
-        return vehicleRepository.findById(vehicleID);
+    public Optional<Vehicle> getVehicleByID(Long id) {
+        return vehicleRepository.findById(id);
     }
-
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
-
 
 }

@@ -13,10 +13,8 @@ import java.util.Optional;
 public class AppUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private AppUserRepository appUserRepository;
-
     @Autowired
     private UserRoleService userRoleService;
 

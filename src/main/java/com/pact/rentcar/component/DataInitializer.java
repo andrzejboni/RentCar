@@ -1,6 +1,5 @@
 package com.pact.rentcar.component;
 
-
 import com.pact.rentcar.configuration.SecurityConfiguration;
 import com.pact.rentcar.model.AppUser;
 import com.pact.rentcar.model.UserRole;
@@ -27,19 +26,14 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Autowired
     private AppUserRepository appUserRepository;
-
     @Autowired
     private UserRoleRepository userRoleRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private VehicleRepository vehicleRepository;
-
     @Autowired
     private VehicleParametersRepository vehicleParametersRepository;
-
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -53,23 +47,35 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     }
 
+
     private void createInitialUsers() {
         addUser("admin", "admin", "Andrzej", "PinkFloyd", "888777555", "ROLE_USER", "ROLE_ADMIN");
         addUser("user", "user", "Roger", "Waters", "333000888", "ROLE_USER");
     }
 
-
     private void createInitialVehicles() {
-        addVehicle("GD1234","Honda","Civic", 120.0);
-        addVehicle("UG2244","Mazda","Premacy", 100.0);
-        addVehicle("PO1234","Volvo","S60", 215.0);
-
-//        addVehicleParameters(1L,"Sedan",1999,"Petrol",90, "auto",1, 3,
-//        5, "Red", 1,"", "Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit." );
-
+        addVehicle("GD1111", "Honda", "Civic", 120.0, "Sedan", 1999, "Petrol",
+                90, "auto", 1, 3,
+                5, "Red", 1, "", "Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit.");
+        addVehicle("GD2222", "Mazda", "Premacy", 130.0, "Combi", 2006, "LPG",
+                110, "manual", 1, 5,
+                7, "Blue", 0, "", "Curabitur aliquet quam id dui posuere blandit.");
+        addVehicle("GD3333", "Volvo", "S90", 300.0, "Sedan", 2019, "Petrol",
+                270, "auto", 0, 5,
+                5, "Gold", 1, "", "aliquet quam id dui posuere blandit.");
+        addVehicle("GD4444", "Toyota", "Prius", 170.0, "Sedan", 2016, "Hybrid",
+                70, "auto", 1, 3,
+                5, "Silver", 1, "", "tincidunt aliquet quam id dui posuere  accumsan tincidunt. Curabitur blandit.");
+        addVehicle("GD5555", "Tesla", "Model 3", 280.0, "Sedan", 2018, "Electric",
+                210, "auto", 1, 5,
+                5, "Black", 1, "", " porttitor aliquet quam id dui posuere blandit.Nulla porttitor accumsan tincidunt.");
     }
 
-    private void addVehicle(String registration, String brand, String model, Double dailyFee) {
+
+    private void addVehicle(String registration, String brand, String model, Double dailyFee, String bodytype, Integer productionYear, String fuelType, Integer power, String gearbox,
+                                      Integer frontWheelDrive, Integer doorsNumber, Integer seatsNumber, String color, Integer metallic, String photoName, String description) {
+
+        // Tworzę pojazd
         Optional<Vehicle> searchedVehicle = vehicleRepository.findVehicleByRegistration(registration);
         if (!searchedVehicle.isPresent()) {
             Vehicle vehicle = Vehicle.builder()
@@ -79,33 +85,29 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                     .dailyFee(dailyFee).build();
 
             vehicleRepository.save(vehicle);
+
+            // Tworzę parametry do pojazdu
+            Optional<VehicleParameters> searchedVehicleParameters = vehicleParametersRepository.findById(vehicle.getId()); //UWAGA
+            if (!searchedVehicleParameters.isPresent()) {
+                VehicleParameters vehicleParameters = VehicleParameters.builder()
+                        .vehicle(vehicle) // UWAGA MOŻE SIĘ WYPIERDOLIC
+                        .bodytype(bodytype)
+                        .productionYear(productionYear)
+                        .fuelType(fuelType)
+                        .power(power)
+                        .gearbox(gearbox)
+                        .frontWheelDrive(frontWheelDrive)
+                        .doorsNumber(doorsNumber)
+                        .seatsNumber(seatsNumber)
+                        .color(color)
+                        .metallic(metallic)
+                        .photoName(photoName)
+                        .description(description).build();
+
+                vehicleParametersRepository.save(vehicleParameters);
+            }
         }
     }
-
-    private void addVehicleParameters(Long vehicleID, String bodytype, Integer productionYear, String fuelType, Integer power, String gearbox,
-                                                Integer frontWheelDrive, Integer doorsNumber, Integer seatsNumber, String color, Integer metallic, String photoName, String description) {
-        Optional<VehicleParameters> searchedVehicleParameters = vehicleParametersRepository.findByVehicleID(vehicleID);
-        if (!searchedVehicleParameters.isPresent()) {
-            VehicleParameters vehicleParameters = VehicleParameters.builder()
-                    .vehicleID(vehicleID) // UWAGA MOŻE SIĘ WYPIERDOLIC
-                    .bodytype(bodytype)
-                    .productionYear(productionYear)
-                    .fuelType(fuelType)
-                    .power(power)
-                    .gearbox(gearbox)
-                    .frontWheelDrive(frontWheelDrive)
-                    .doorsNumber(doorsNumber)
-                    .seatsNumber(seatsNumber)
-                    .color(color)
-                    .metallic(metallic)
-                    .photoName(photoName)
-                    .description(description).build();
-
-            vehicleParametersRepository.save(vehicleParameters);
-        }
-    }
-
-
 
     private void addUser(String username, String password, String firstName, String lastName, String phone, String... roles) {
         Set<UserRole> userRoles = new HashSet<>();
