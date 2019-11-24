@@ -1,14 +1,8 @@
 package com.pact.rentcar.component;
 
 import com.pact.rentcar.configuration.SecurityConfiguration;
-import com.pact.rentcar.model.AppUser;
-import com.pact.rentcar.model.UserRole;
-import com.pact.rentcar.model.Vehicle;
-import com.pact.rentcar.model.VehicleParameters;
-import com.pact.rentcar.repository.AppUserRepository;
-import com.pact.rentcar.repository.UserRoleRepository;
-import com.pact.rentcar.repository.VehicleParametersRepository;
-import com.pact.rentcar.repository.VehicleRepository;
+import com.pact.rentcar.model.*;
+import com.pact.rentcar.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -34,6 +28,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private VehicleRepository vehicleRepository;
     @Autowired
     private VehicleParametersRepository vehicleParametersRepository;
+    @Autowired
+    private LocationRepository locationRepository;
+    @Autowired
+    private VehicleStatusRepository vehicleStatusRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -44,7 +42,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         createInitialUsers();
 
         createInitialVehicles();
-
     }
 
 
@@ -69,11 +66,15 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addVehicle("GD5555", "Tesla", "Model 3", 280.0, "Sedan", 2018, "Electric",
                 210, "auto", 1, 5,
                 5, "Black", 1, "", " porttitor aliquet quam id dui posuere blandit.Nulla porttitor accumsan tincidunt.");
+        addVehicle("GD1234", "Hyundai", "i20", 369.4, "hatchback", 2017, "Petrol",
+                85, "manual", 1, 5,
+                5, "RedPassion", 1, "", " porttitor aliquet quam id dui posuere blandit.Nulla porttitor accumsan tincidunt.");
     }
 
 
     private void addVehicle(String registration, String brand, String model, Double dailyFee, String bodytype, Integer productionYear, String fuelType, Integer power, String gearbox,
-                                      Integer frontWheelDrive, Integer doorsNumber, Integer seatsNumber, String color, Integer metallic, String photoName, String description) {
+                            Integer frontWheelDrive, Integer doorsNumber, Integer seatsNumber, String color, Integer metallic, String photoName, String description
+    ) {
 
         // Tworzę pojazd
         Optional<Vehicle> searchedVehicle = vehicleRepository.findVehicleByRegistration(registration);
@@ -107,6 +108,24 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                 vehicleParametersRepository.save(vehicleParameters);
             }
         }
+//        String country, String city, String adres, String phone, String vehicleStatCode, Boolean available
+//        Location location = Location.builder()
+//                .country(country)
+//                .city(city)
+//                .adres(adres)
+//                .phone(phone).build();
+//        locationRepository.save(location);
+//
+//
+//
+//        Optional<VehicleStatus> searchVehicleStatus = vehicleStatusRepository.findByVehicleStatCode(vehicleStatCode);
+//        if (!searchVehicleStatus.isPresent()) {
+//            VehicleStatus vehicleStatus = VehicleStatus.builder()
+//                    .vehicleStatCode(vehicleStatCode)
+//                    .available(available).build();
+//            vehicleStatusRepository.save(vehicleStatus);
+//        }
+
     }
 
     private void addUser(String username, String password, String firstName, String lastName, String phone, String... roles) {
@@ -146,4 +165,27 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             userRoleRepository.save(role);
         }
     }
+
+    private void addLocation(String country, String city, String adres, String phone) {
+//        Optional<Location> searchLocation = locationRepository.;
+//        if (!searchLocation.isPresent()) {
+        Location location = Location.builder()
+                .country(country)
+                .city(city)
+                .adres(adres)
+                .phone(phone).build();
+        locationRepository.save(location);
+    }
+
+    private void addVehcileStatus(String vehicleStatCode, Boolean available) {
+        Optional<VehicleStatus> searchVehicleStatus = vehicleStatusRepository.findByVehicleStatCode(vehicleStatCode);
+        if (!searchVehicleStatus.isPresent()) {
+            VehicleStatus vehicleStatus = VehicleStatus.builder()
+                    .vehicleStatCode(vehicleStatCode)
+                    .available(available).build();
+            vehicleStatusRepository.save(vehicleStatus);
+        }
+    }
+
+
 }

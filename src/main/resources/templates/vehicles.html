@@ -36,7 +36,7 @@
         <div th:if="${loggedIn}" class="col-2"> <a th:href="@{/}"><b>Rent</b></a></div>
     </div>
 </div>
-
+<th:block th:include="template :: footer"/>
 <th:block th:include="template :: scripts_js"/>
 </body>
 </html>

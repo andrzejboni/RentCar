@@ -26,10 +26,10 @@ public class Comment {
 
 
     @ManyToOne
-    AppUser appUser;
+    AppUser appUser; // TODO to samo co poniżej
 
     @ManyToOne
-    Vehicle vehicle;
+    Vehicle vehicle; // TODO trzeba je wszystkie ściągnąć i przypisać jeden do skojarzonego pojazdu !!
 
 
 }
