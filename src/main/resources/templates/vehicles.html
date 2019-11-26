@@ -33,7 +33,9 @@
         <div class="col-md-2" th:text="${vehicle.brand}"></div>
         <div class="col-md-2" th:text="${vehicle.model}"></div>
         <div class="col-md-2" th:text="${vehicle.dailyFee}"></div>
-        <div th:if="${loggedIn}" class="col-2"> <a th:href="@{/}"><b>Rent</b></a></div>
+        <div th:if="${loggedIn}" class="col-2">
+            <a th:href="@{'/rentVehicle/' + ${vehicle.id}}">Rent</a>
+        </div>
     </div>
 </div>
 <th:block th:include="template :: footer"/>

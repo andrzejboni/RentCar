@@ -19,7 +19,7 @@
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/vehicles}">Vehicle list</a>
             <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/user/profile}">Profile</a>
-            <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/vehicleForm}">Admin Panel</a>
+            <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/admin/adminPanel}">Admin Panel</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Best offers</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">About us</a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/contact}">Contact</a>

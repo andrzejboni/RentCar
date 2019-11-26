@@ -14,12 +14,6 @@ import javax.persistence.*;
 public class VehicleStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String vehicleStatCode;
-
     private boolean available;
-
-
-
-
 }

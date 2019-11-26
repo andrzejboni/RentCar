@@ -38,26 +38,6 @@ public class VehicleController {
 
     //TODO Dodać ewentualnie appuser service do autoryzacji i appuserauthentiaction service - patrz wzór
 
-//    @GetMapping("/vehicleForm")
-//    public String getVehicleFormPage(Model model) {
-//        model.addAttribute("formObject", new AddVehicleRequest());
-//        return "admin/vehicleForm";
-//    }
-
-//    @PostMapping("/vehicleForm")
-//    public String sendVehicleForm(Model model, AddVehicleRequest addVehicleRequest) {
-//        // logika dodawania samochodu w panelu admina
-//
-//        Optional<Vehicle> vehicleOptional = vehicleService.addVehicle(addVehicleRequest);
-//        if (vehicleOptional.isPresent()) {
-//            return "redirect:/vehicleForm"; // Wywalic komunikat, albo przekierowac
-//        }
-//
-//        model.addAttribute("message", "Could not add vehicle!");
-//        model.addAttribute("formObject", addVehicleRequest);
-//
-//        return "admin/vehicleForm";
-//    }
 
     @GetMapping(path = "/vehicles")
     public String getVehicle(Model model) {
@@ -68,8 +48,9 @@ public class VehicleController {
         return "vehicles";
     }
 
-//    @GetMapping(path = "/addPizzaToCart/{pizzaId}")
-//    public String addToCart(Model model, @PathVariable(name = "pizzaId") Long id) {
+
+//    @GetMapping(path = "/rentVehicle/{vehicleId}")
+//    public String rentVehicle(Model model, @PathVariable(name = "vehicleId") Long id) {
 //        Optional<UserCart> cart = appUserService.addPizzaToCart(id);
 //
 //        if (cart.isPresent()) {

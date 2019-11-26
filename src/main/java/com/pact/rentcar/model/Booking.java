@@ -32,6 +32,4 @@ public class Booking {
     @ManyToOne
     Vehicle vehicle;
 
-
-
 }
