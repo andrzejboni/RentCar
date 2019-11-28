@@ -19,8 +19,7 @@ public class VehicleService {
     private VehicleRepository vehicleRepository;
     @Autowired
     private VehicleParametersRepository vehicleParametersRepository;
-    @Autowired
-    private VehicleStatusRepository vehicleStatusRepository;
+
 
 
     public Optional<Vehicle> addVehicle(AddVehicleRequest addVehicleRequest) {
@@ -63,10 +62,9 @@ public class VehicleService {
         return Optional.empty();
     }
 
-    public Optional<Vehicle> getVehicleByID(Long id) {
-        return vehicleRepository.findById(id);
+    public Vehicle getVehicleByID(Long id) {
+        return vehicleRepository.getOne(id);
     }
-
 
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();

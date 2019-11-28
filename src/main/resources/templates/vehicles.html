@@ -15,16 +15,17 @@
 
 <div class="container">
     <div sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="row">
-        <div class="offset-10 col-2">
-            <a th:href="@{/admin/vehicle}">Add New Vehicle</a>
-        </div>
+    <div class="offset-10 col-2">
+        <a th:href="@{/admin/vehicle}">Add New Vehicle</a>
     </div>
+</div>
     <div class="row header">
         <div class="col-1"><b>Id</b></div>
         <div class="col-2"><b>Registration</b></div>
-        <div class="col-2"><b>Brand</b></div>
+        <div class="col-1"><b>Brand</b></div>
         <div class="col-2"><b>Model</b></div>
         <div class="col-2"><b>Daily fee</b></div>
+        <div class="col-1"><b>Status</b></div>
         <div th:if="${loggedIn}" class="col-2"><b>Actions</b></div>
     </div>
     <div class="row table-row" th:each="vehicle,i : ${vehicles}">
@@ -34,7 +35,7 @@
         <div class="col-md-2" th:text="${vehicle.model}"></div>
         <div class="col-md-2" th:text="${vehicle.dailyFee}"></div>
         <div th:if="${loggedIn}" class="col-2">
-            <a th:href="@{'/rentVehicle/' + ${vehicle.id}}">Rent</a>
+            <a th:href="@{'/user/booking/' + ${vehicle.id}}"><b>Rent</b></a>
         </div>
     </div>
 </div>

@@ -29,7 +29,17 @@ public class VehicleParameters {
     private String photoName;
     private String description;
 
+//    @Id
     @ManyToOne
     Vehicle vehicle;
+
+//    @Id
+//    @Column(name = "vehicleID")
+//    private Long vehicleID;
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "vehicleID")
+//    private Vehicle vehicle;
+
 
 }

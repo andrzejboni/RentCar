@@ -19,10 +19,6 @@ import java.util.Optional;
 @Controller
 public class VehicleController {
 
-// FIXME
-//  Nie odpala sie przez tą klasę cała aplikacja, któraś metoda nie może sie załadować
-//  źle mapuje na metodę stronę czy coś !!!
-
     @Autowired
     private VehicleService vehicleService;
     @Autowired
@@ -36,11 +32,8 @@ public class VehicleController {
         return appUserAuthenticationService.getLoggedInUser().isPresent();
     }
 
-    //TODO Dodać ewentualnie appuser service do autoryzacji i appuserauthentiaction service - patrz wzór
-
-
     @GetMapping(path = "/vehicles")
-    public String getVehicle(Model model) {
+    public String getAllVehicles(Model model) {
         List<Vehicle> vehicleList = vehicleService.getAllVehicles();
 
         model.addAttribute("vehicles", vehicleList);
@@ -49,18 +42,7 @@ public class VehicleController {
     }
 
 
-//    @GetMapping(path = "/rentVehicle/{vehicleId}")
-//    public String rentVehicle(Model model, @PathVariable(name = "vehicleId") Long id) {
-//        Optional<UserCart> cart = appUserService.addPizzaToCart(id);
-//
-//        if (cart.isPresent()) {
-//            return "redirect:/pizzas";
-//        }
-//        model.addAttribute("message", "Could not add pizza");
-//        List<Pizza> pizzaList = pizzaService.getAllPizzas();
-//        model.addAttribute("pizzas", pizzaList);
-//
-//        return "pizzas";
-//    }
+
+
 
 }
