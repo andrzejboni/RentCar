@@ -38,29 +38,30 @@ public class VehicleService {
         return Optional.empty();
     }
 
-    public Optional<VehicleParameters> addVehicleParameters(AddVehicleParametersRequest addVehicleParametersRequest) {
-        Optional<VehicleParameters> optionalVehicleParameters = vehicleParametersRepository.findById(addVehicleParametersRequest.getVehicleID()); // uwaga może coś nie pytknąc
-        if (!optionalVehicleParameters.isPresent()) {
+//    public Optional<VehicleParameters> addVehicleParameters(AddVehicleParametersRequest addVehicleParametersRequest) {
+//        Optional<VehicleParameters> optionalVehicleParameters = vehicleParametersRepository.findById(addVehicleParametersRequest.(); // uwaga może coś nie pytknąc
+//        if (!optionalVehicleParameters.isPresent()) {
+//
+//            VehicleParameters vehicleParameters = new VehicleParameters();
+//
+//            vehicleParameters.setBodytype(addVehicleParametersRequest.getBodytype());
+//            vehicleParameters.setProductionYear(addVehicleParametersRequest.getProductionYear());
+//            vehicleParameters.setFuelType(addVehicleParametersRequest.getFuelType());
+//            vehicleParameters.setPower(addVehicleParametersRequest.getPower());
+//            vehicleParameters.setGearbox(addVehicleParametersRequest.getGearbox());
+//            vehicleParameters.setFrontWheelDrive(addVehicleParametersRequest.getFrontWheelDrive());
+//            vehicleParameters.setDoorsNumber(addVehicleParametersRequest.getDoorsNumber());
+//            vehicleParameters.setSeatsNumber(addVehicleParametersRequest.getSeatsNumber());
+//            vehicleParameters.setColor(addVehicleParametersRequest.getColor());
+//            vehicleParameters.setMetallic(addVehicleParametersRequest.getMetallic());
+//            vehicleParameters.setPhotoName(addVehicleParametersRequest.getPhotoName());
+//            vehicleParameters.setDescription(addVehicleParametersRequest.getDescription());
+//
+//            return Optional.of(vehicleParametersRepository.save(vehicleParameters));
+//        }
+//        return Optional.empty();
+//    }
 
-            VehicleParameters vehicleParameters = new VehicleParameters();
-
-            vehicleParameters.setBodytype(addVehicleParametersRequest.getBodytype());
-            vehicleParameters.setProductionYear(addVehicleParametersRequest.getProductionYear());
-            vehicleParameters.setFuelType(addVehicleParametersRequest.getFuelType());
-            vehicleParameters.setPower(addVehicleParametersRequest.getPower());
-            vehicleParameters.setGearbox(addVehicleParametersRequest.getGearbox());
-            vehicleParameters.setFrontWheelDrive(addVehicleParametersRequest.getFrontWheelDrive());
-            vehicleParameters.setDoorsNumber(addVehicleParametersRequest.getDoorsNumber());
-            vehicleParameters.setSeatsNumber(addVehicleParametersRequest.getSeatsNumber());
-            vehicleParameters.setColor(addVehicleParametersRequest.getColor());
-            vehicleParameters.setMetallic(addVehicleParametersRequest.getMetallic());
-            vehicleParameters.setPhotoName(addVehicleParametersRequest.getPhotoName());
-            vehicleParameters.setDescription(addVehicleParametersRequest.getDescription());
-
-            return Optional.of(vehicleParametersRepository.save(vehicleParameters));
-        }
-        return Optional.empty();
-    }
 
     public Vehicle getVehicleByID(Long id) {
         return vehicleRepository.getOne(id);

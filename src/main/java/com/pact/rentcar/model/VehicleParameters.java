@@ -12,9 +12,36 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 public class VehicleParameters {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
+
+//    private Long vehicleID;
+//    @Id
+//    @OneToOne(fetch = FetchType.EAGER)
+//    private Vehicle vehicle;
+
+//    @JoinColumn(name = "vehicle_id")
+
+
+    //    @Column(unique = true, nullable = false)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
+
+
+    @OneToOne
+    private Vehicle vehicle;
+
+
+    /** user with this associated settings */
+//    @MapsId
+//    @OneToOne
+//    @JoinColumn(name = "id")
+//    private Vehicle vehicle;
+
 
     private String bodytype;
     private Integer productionYear;
@@ -29,17 +56,10 @@ public class VehicleParameters {
     private String photoName;
     private String description;
 
-//    @Id
-    @ManyToOne
-    Vehicle vehicle;
+//    @ManyToOne
+//    Vehicle vehicle;
 
-//    @Id
-//    @Column(name = "vehicleID")
-//    private Long vehicleID;
-//
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "vehicleID")
-//    private Vehicle vehicle;
+
 
 
 }

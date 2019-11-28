@@ -27,47 +27,6 @@ public class AdminController {
         return "admin/adminPanel";
     }
 
-//    @GetMapping(path = "/pizzaForm")
-//    public String getPizzaForm(Model model) {
-//        model.addAttribute("formObject", new AddPizzaRequest());
-//
-//        return "admin/pizzaForm";
-//    }
-//
-//    @PostMapping(path = "/pizzaForm")
-//    public String sendNewPizza(Model model, AddPizzaRequest request) {
-//        Optional<Pizza> pizzaOptional = pizzaService.addPizza(request);
-//        if (pizzaOptional.isPresent()) {
-//            Pizza createdPizza = pizzaOptional.get();
-//
-//            return "redirect:/admin/ingredients/" + createdPizza.getId();
-//        }
-//
-//        model.addAttribute("message", "Could not add pizza!");
-//        model.addAttribute("formObject", request);
-//
-//        return "admin/pizzaForm";
-//    }
-//
-//    @GetMapping(path = "/ingredients/{id}")
-//    public String getIngredientsForm(Model model, @PathVariable(name = "id") Long id) {
-//        IngredientsRequest request = new IngredientsRequest();
-//        request.setPizzaId(id);
-//        request.setIngredients(pizzaService.getAllIngredients()
-//                .stream()
-//                .map(ingredient -> new IngredientRequest(ingredient.getName(), false))
-//                .collect(Collectors.toList()));
-//
-//        model.addAttribute("formObject", request);
-//
-//        return "admin/ingredientsForm";
-//    }
-//
-//    @PostMapping(path = "/ingredients/{id}")
-//    public String sendIngredients(Model model, IngredientsRequest request) {
-//        Optional<Pizza> pizza = pizzaService.updateIngredients(request);
-//        return "redirect:/pizzas";
-//    }
 
 
 }

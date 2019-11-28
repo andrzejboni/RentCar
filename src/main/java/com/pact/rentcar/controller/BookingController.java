@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Controller
 public class BookingController {
 
@@ -35,9 +34,16 @@ public class BookingController {
 
     @GetMapping(path = "/user/booking/{vehicleId}")
     public String getBookingVehicle(Model model, @PathVariable(name = "vehicleId") Long id) {
-        Vehicle vehicle = vehicleService.getVehicleByID(id);
 
+
+        Vehicle vehicle = vehicleService.getVehicleByID(id);
         model.addAttribute("vehicles", vehicle);
+
+
+        VehicleParameters vehicleParam = vehicleParametersService.getVehicleParametersByID(id);
+        model.addAttribute("vehicleParameters", vehicleParam);
+
+
 
         return "user/booking";
     }

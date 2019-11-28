@@ -11,11 +11,6 @@ import java.util.Optional;
 @Repository
 public interface VehicleParametersRepository extends JpaRepository<VehicleParameters, Long> {
 
-    Optional<VehicleParameters> findVehicleParametersByVehicleId(Long id);
-
-
-
-
-
-
+    @Override
+    Optional<VehicleParameters> findById(Long aLong);
 }

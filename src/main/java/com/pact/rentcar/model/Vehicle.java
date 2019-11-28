@@ -10,9 +10,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vehicle {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
+
+//    @Column(unique = true, nullable = false)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /** user settings */
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "vehicle")
+
+    @OneToOne(mappedBy = "vehicle")
+    private VehicleParameters vehicleParameters;
 
     private String registration;
     private String brand;

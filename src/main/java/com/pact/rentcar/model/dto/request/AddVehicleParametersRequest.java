@@ -1,5 +1,6 @@
 package com.pact.rentcar.model.dto.request;
 
+import com.pact.rentcar.model.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddVehicleParametersRequest {
 
-    private Long vehicleID; // UWAGA MOZE TO BYC NIEPOTRZEBEN
+    // TODO ZMIANA!!!
+    private Vehicle vehicle;
 
     private String bodytype;
     private Integer productionYear;

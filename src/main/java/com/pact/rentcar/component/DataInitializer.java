@@ -56,22 +56,22 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private void createInitialVehicles() {
         addVehicle("GD1111", "Honda", "Civic", 120.0, "Sedan", 1999, "LPG",
                 90, "auto", 1, 3,
-                5, "Yellow", 1, "", "Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit.", "Poland", "Gdansk", "Pozbawiona 17", "333 333 333");
+                5, "Yellow", 1, "", "Lorem ipsum", "Poland", "Gdansk", "Pozbawiona 17", "333 333 333");
         addVehicle("GD2222", "Mazda", "2", 130.0, "Hatchback", 2006, "Petrol",
                 75, "manual", 1, 5,
                 7, "Red", 0, "", "Fast as red arrow", "Poland", "Gdynia", "Aksamitna 1", "667 222 333");
         addVehicle("GD3333", "Volvo", "S90", 300.0, "Sedan", 2019, "Petrol",
                 270, "auto", 0, 5,
-                5, "Gold", 1, "", "aliquet quam id dui posuere blandit.", "Poland", "Sopot", "Typowa 7", "456 333 555");
+                5, "Gold", 1, "", "Lorem ipsum", "Poland", "Sopot", "Typowa 7", "456 333 555");
         addVehicle("GD4444", "Toyota", "Prius", 170.0, "Sedan", 2016, "Hybrid",
                 70, "auto", 1, 3,
-                5, "Silver", 1, "", "tincidunt aliquet quam id dui posuere  accumsan tincidunt. Curabitur blandit.", "Poland", "Wejherowo", "Mroczna 88", "222 333 333");
+                5, "Silver", 1, "", "Lorem ipsum", "Poland", "Wejherowo", "Mroczna 88", "222 333 333");
         addVehicle("GD5555", "Tesla", "Model 3", 280.0, "Sedan", 2018, "Electric",
                 210, "auto", 1, 5,
-                5, "Black", 1, "", " porttitor aliquet quam id dui posuere blandit.Nulla porttitor accumsan tincidunt.", "Poland", "Wejherowo", "Mroczna 88", "222 333 333");
+                5, "Black", 1, "", "Lorem ipsum", "Poland", "Wejherowo", "Mroczna 88", "222 333 333");
         addVehicle("GD1234", "Hyundai", "i20", 369.4, "Hatchback", 2017, "Petrol",
                 85, "manual", 1, 5,
-                5, "RedPassion", 1, "", " porttitor aliquet quam id dui posuere blandit.Nulla porttitor accumsan tincidunt.", "Poland", "Rumia", "Czysta 33", "123 333 333");
+                5, "RedPassion", 1, "", "Lorem ipsum", "Poland", "Rumia", "Czysta 33", "123 333 333");
     }
 
 
@@ -108,7 +108,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             Optional<VehicleParameters> searchedVehicleParameters = vehicleParametersRepository.findById(vehicle.getId());
             if (!searchedVehicleParameters.isPresent()) {
                 VehicleParameters vehicleParameters = VehicleParameters.builder()
-                        .vehicle(vehicle)
+                        .id(vehicle.getId())
+//                        .vehicle(vehicle)
                         .bodytype(bodytype)
                         .productionYear(productionYear)
                         .fuelType(fuelType)
