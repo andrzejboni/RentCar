@@ -11,14 +11,6 @@ public class VehicleParametersService {
     @Autowired
     private VehicleParametersRepository vehicleParametersRepository;
 
-
-    // FIXME Jeśli VehicleParameters będzie miał swoje id (vehicleParametersId) to ta metoda może być potrzebna.
-    // FIXME jeśli id tej klasy będzie vehicleId to jest ona zbędna.
-//    public VehicleParameters getVehicleParametersByVehicleID(Long id) {
-//        return vehicleParametersRepository.getOne(id);
-//    }
-
-
     public VehicleParameters getVehicleParametersByID(Long id) {
         return vehicleParametersRepository.getOne(id);
     }

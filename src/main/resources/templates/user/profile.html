@@ -10,8 +10,31 @@
 </head>
 <body>
 <th:block th:include="template :: navigator"/>
-<h2>This is your profile</h2>
+<th:block th:include="template :: messageBox"/>
+<h2>Profile:</h2>
 
+<div class="container">
+    <h3>Your bookings:</h3>
+
+    <div class="row header">
+        <div class="col-2"><b>Booking ID</b></div>
+        <div class="col-2"><b>User</b></div>
+<!--        <div class="col-1"><b>Location</b></div>-->
+        <div class="col-2"><b>Vehicle</b></div>
+        <div class="col-2"><b>Recipe Date</b></div>
+        <div class="col-2"><b>Return Date</b></div>
+        <div class="col-2"><b>Total Cost</b></div>
+    </div>
+    <div class="row table-row" th:each="booking, i : ${bookings}">
+        <div class="col-md-2" th:text="${bookings.id}"></div>
+        <div class="col-md-2" th:text="${bookings.appUser}"></div>
+<!--        <div class="col-md-1" th:text="${bookings.location}"></div>-->
+        <div class="col-md-2" th:text="${bookings.vehicle}"></div>
+        <div class="col-md-2" th:text="${bookings.recipeDate}"></div>
+        <div class="col-md-2" th:text="${bookings.returnDate}"></div>
+        <div class="col-md-2" th:text="${bookings.totalCost}"></div>
+    </div>
+</div>
 
 <th:block th:include="template :: footer"/>
 <th:block th:include="template :: scripts_js"/>

@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.ManyToOne;
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 
@@ -16,12 +18,20 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class AddBookingRequest {
 
-    private Timestamp recipeDate;
-    private Timestamp returnDate;
-    private Double totalCost;
+//    private Timestamp recipeDate;
+//    private Timestamp returnDate;
+//    private Double totalCost;
+//
+//    AppUser appUser; // appUserID
+//    Location location; // locationID//TODO Zmodyfikować aby wysyłal także lokalizacje i Vehicle!
+//    Vehicle vehicle;    // vehicleID
 
-    AppUser appUser;
-    Location location;
-    Vehicle vehicle;
 
+    private Date recipeDate;
+    private Date  returnDate;
+    private Double  totalCost;
+
+    private AppUser  appUser; // appUserID
+    private Location  location; // locationID//TODO Zmodyfikować aby wysyłal także lokalizacje i Vehicle!
+    private Vehicle  vehicle;    // vehicleID
 }

@@ -27,6 +27,7 @@ public class AuthorizationController {
     @GetMapping("/register")
     public String getRegisterPage(Model model) { // 04 3:20
         model.addAttribute("formObject", new RegisterUserRequest());
+
         return "authorization/register";
     }
 

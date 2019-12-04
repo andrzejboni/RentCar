@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
@@ -19,8 +21,8 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Timestamp recipeDate;
-    private Timestamp returnDate;
+    private Date recipeDate;
+    private Date returnDate;
     private Double totalCost;
 
     @ManyToOne

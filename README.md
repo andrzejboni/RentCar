@@ -4,7 +4,6 @@
 This application is used to service car rental companies. It allows registering and logging users (Spring Security), making car reservations, browsing reservations, managing rentings , users or vehicles by authorized persons.
 
 ## Backend
-
 Restowe API napisane w Springu z wykorzystaniem następujących technologii:
 
 * Spring MVC

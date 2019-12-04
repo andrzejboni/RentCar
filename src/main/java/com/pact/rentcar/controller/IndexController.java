@@ -10,5 +10,4 @@ public class IndexController {
         return "index"; // zwrócimy index.html w templates
 
     }
-
 }

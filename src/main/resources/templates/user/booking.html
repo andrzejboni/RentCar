@@ -5,23 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <th:block th:include="template :: scripts_css"/>
-
     <title>Booking</title>
 </head>
 <body>
 <th:block th:include="template :: navigator"/>
 <th:block th:include="template :: messageBox"/>
 <h2>Booking</h2>
-
-
-<br>
 <div class="container">
-    <div sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="row">
-        <div class="offset-10 col-2">
-            <a th:href="@{/}">blabal</a>
-        </div>
-    </div>
-
     <h2>Congratulations on your choice!</h2>
     <div class="row header">
         <div class="col-1"><b>Id</b></div>
@@ -38,17 +28,13 @@
         <div class="col-md-2" th:text="${vehicle.model}"></div>
         <div class="col-md-2" th:text="${vehicle.dailyFee}"></div>
         <div th:if="${loggedIn}" class="col-2">
-            <a th:href="@{'/a' + ${vehicle.id}}"><b>Confirm</b></a>
+            <a th:href="@{'/user/profile'}"><b>Confirm</b></a>
         </div>
     </div>
 </div>
-
-<br>
-<br>
 <br>
 <div class="container">
-    <h3>Car parameters:</h3>
-
+    <h4>Car parameters:</h4>
     <div class="row header">
         <div class="col-1"><b>Bodytype</b></div>
         <div class="col-1"><b>Year</b></div>
@@ -62,49 +48,85 @@
         <div class="col-1"><b>Metallic</b></div>
         <div class="col-2"><b>Descr</b></div>
     </div>
-        <div class="row table-row" th:each="vehicleParam, i : ${vehicleParameters}">
-            <div class="col-md-1" th:text="${vehicleParameters.bodytype}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.productionYear}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.fuelType}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.power}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.gearbox}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.frontWheelDrive}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.doorsNumber}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.seatsNumber}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.color}"></div>
-            <div class="col-md-1" th:text="${vehicleParameters.metallic}"></div>
-            <div class="col-md-2" th:text="${vehicleParameters.description}"></div>
-        </div>
+    <div class="row table-row" th:each="vehicleParam, i : ${vehicleParameters}">
+        <div class="col-md-1" th:text="${vehicleParameters.bodytype}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.productionYear}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.fuelType}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.power}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.gearbox}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.frontWheelDrive}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.doorsNumber}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.seatsNumber}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.color}"></div>
+        <div class="col-md-1" th:text="${vehicleParameters.metallic}"></div>
+        <div class="col-md-2" th:text="${vehicleParameters.description}"></div>
+    </div>
 </div>
 <br>
 <br>
-<br>
 
-<!--<div class="container">-->
-<!--    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
-<!--&lt;!&ndash;        <form th:href="@{/admin/pizzaForm}" method="post" th:object="${formObject}">&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="recipeDate">Recipe date:</label>-->
-<!--                <input type="datetime-local" class="form-control" name="recipeDate" id="recipeDate" th:field="*{null}" placeholder="Recipe date">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="returnDate">Return date</label>-->
-<!--                <input type="date" class="form-control" name="returnDate" id="returnDate" th:field="*{null}"  placeholder="Return date">-->
-<!--            </div>-->
-<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                <label for="numberOfDays">Number of days</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="number" class="text" name="numberOfDays" id="numberOfDays" th:field="*{null}"  placeholder="Number Of Days">&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="pizzaPrice">Pizza price:</label>-->
-<!--                <input type="number" class="form-control" name="pizzaPrice" id="pizzaPrice" th:field="*{null}" step="0.01" placeholder="Pizza price">-->
-<!--            </div>-->
-<!--            <div class="form-check">-->
-<!--                <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--            </div>-->
-<!--&lt;!&ndash;        </form>&ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h4 class="mb-3">Fill details</h4>
+        <form th:href="@{/user/booking/}" method="post" th:object="${formObject}">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" th:field="*{appUser}"
+                                       aria-describedby="appUserHelp"
+                                       placeholder="AppUser">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="vehicle">Vehicle</label>
+                                <input type="text" class="form-control" name="vehicle" id="vehicle" th:field="*{vehicle}"
+                                       aria-describedby="vehicleHelp"
+                                       placeholder="Vehicle">
+
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="recipeDate">Recipe Date</label>
+                    <input type="date" class="form-control" name="recipeDate" id="recipeDate" th:field="*{recipeDate}"
+                           aria-describedby="recipeDateHelp"
+                           placeholder="RecipeDate">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" class="form-control" name="returnDate" id="returnDate" th:field="*{returnDate}"
+                           aria-describedby="returnDateHelp"
+                           placeholder="ReturnDate">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" id="location" th:field="*{location}"
+                           aria-describedby="locationHelp"
+                           placeholder="AppUser">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="totalCost"><b>Total Cost</b></label>
+                    <input type="number" class="form-control" name="totalCost" id="totalCost" th:field="*{totalCost}"
+                           aria-describedby="totalCostHelp"
+                           placeholder="totalCost">
+                    <small id="totalCostHelp" class="form-text text-muted">Number of days * daily fee</small>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Confirm booking</button>
+        </form>
+    </div>
+</div>
 
 
 <!--<div class="row header">-->
@@ -118,44 +140,6 @@
 
 <br>
 <br>
-<br>
-
-<form>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="form-row">
-        <div class="col-2">
-            <input type="date" class="form-control" placeholder="Date">
-        </div>
-        <div class="col-2">
-            <input type="date" class="form-control" placeholder="Date">
-        </div>
-        <div class="col-2">
-            <output type="number" class="form-control" placeholder="Total cost"></output>
-        </div>
-    </div>
-    </div>
-</form>
-
-
-<!--<div class="container">-->
-<!--    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
-<!--        <form th:href="@{/admin/pizzaForm}" method="post" th:object="${formObject}">-->
-<!--            <div class="form-group">-->
-<!--                <label for="pizzaName">Pizza Name:</label>-->
-<!--                <input type="text" class="form-control" name="pizzaName" id="pizzaName" th:field="*{name}" placeholder="Pizza name">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="pizzaPrice">Pizza price:</label>-->
-<!--                <input type="number" class="form-control" name="pizzaPrice" id="pizzaPrice" th:field="*{price}" step="0.01" placeholder="Pizza price">-->
-<!--            </div>-->
-<!--            <div class="form-check">-->
-<!--                <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
-<th:block th:include="template :: footer"/>
 <th:block th:include="template :: scripts_js"/>
 </body>
 </html>
