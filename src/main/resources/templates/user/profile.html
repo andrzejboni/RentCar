@@ -13,30 +13,68 @@
 <th:block th:include="template :: messageBox"/>
 <h2>Profile:</h2>
 
-<div class="container">
-    <h3>Your bookings:</h3>
 
+<div class="container">
+    <h4>Your bookings:</h4>
     <div class="row header">
         <div class="col-2"><b>Booking ID</b></div>
-        <div class="col-2"><b>User</b></div>
-<!--        <div class="col-1"><b>Location</b></div>-->
+        <div class="col-2"><b>Username</b></div>
         <div class="col-2"><b>Vehicle</b></div>
         <div class="col-2"><b>Recipe Date</b></div>
         <div class="col-2"><b>Return Date</b></div>
         <div class="col-2"><b>Total Cost</b></div>
     </div>
     <div class="row table-row" th:each="booking, i : ${bookings}">
-        <div class="col-md-2" th:text="${bookings.id}"></div>
-        <div class="col-md-2" th:text="${bookings.appUser}"></div>
-<!--        <div class="col-md-1" th:text="${bookings.location}"></div>-->
-        <div class="col-md-2" th:text="${bookings.vehicle}"></div>
-        <div class="col-md-2" th:text="${bookings.recipeDate}"></div>
-        <div class="col-md-2" th:text="${bookings.returnDate}"></div>
-        <div class="col-md-2" th:text="${bookings.totalCost}"></div>
+        <div class="col-md-2" th:text="${booking.id}"></div>
+        <div class="col-md-2" th:text="${booking.appUser.username}"></div>
+        <div class="col-md-2" th:text="${booking.vehicle.registration}"></div>
+        <div class="col-md-2" th:text="${booking.recipeDate}"></div>
+        <div class="col-md-2" th:text="${booking.returnDate}"></div>
+        <div class="col-md-2" th:text="${booking.totalCost}"></div>
     </div>
-</div>
 
-<th:block th:include="template :: footer"/>
-<th:block th:include="template :: scripts_js"/>
+    <br>
+    <br>
+
+    <h4>Car details:</h4>
+    <div class="row header">
+        <div class="col-2"><b>Car Id</b></div>
+        <div class="col-2"><b>Registration</b></div>
+        <div class="col-2"><b>Brand</b></div>
+        <div class="col-2"><b>Model</b></div>
+        <div class="col-2"><b>Daily fee</b></div>
+        <div class="col-2"><b>Status</b></div>
+    </div>
+    <div class="row table-row" th:each="booking,i : ${bookings}">
+        <div class="col-md-2" th:text="${booking.vehicle.id}"></div>
+        <div class="col-md-2" th:text="${booking.vehicle.registration}"></div>
+        <div class="col-md-2" th:text="${booking.vehicle.brand}"></div>
+        <div class="col-md-2" th:text="${booking.vehicle.model}"></div>
+        <div class="col-md-2" th:text="${booking.vehicle.dailyFee}"></div>
+    </div>
+        <br>
+        <br>
+
+        <h4>Location details:</h4>
+        <div class="row header">
+            <div class="col-2"><b>Booking ID</b></div>
+            <div class="col-2"><b>Location ID</b></div>
+            <div class="col-2"><b>Country</b></div>
+            <div class="col-2"><b>City</b></div>
+            <div class="col-2"><b>Adres</b></div>
+            <div class="col-2"><b>Phone</b></div>
+        </div>
+        <div class="row table-row" th:each="booking, i : ${bookings}">
+            <div class="col-md-2" th:text="${booking.id}"></div>
+            <div class="col-md-2" th:text="${booking.location.id}"></div>
+            <div class="col-md-2" th:text="${booking.location.country}"></div>
+            <div class="col-md-2" th:text="${booking.location.city}"></div>
+            <div class="col-md-2" th:text="${booking.location.adres}"></div>
+            <div class="col-md-2" th:text="${booking.location.phone}"></div>
+        </div>
+    </div>
+
+
+    <th:block th:include="template :: scripts_js"/>
 </body>
 </html>

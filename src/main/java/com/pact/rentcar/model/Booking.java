@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Booking {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Date recipeDate;
@@ -33,5 +33,4 @@ public class Booking {
 
     @ManyToOne
     Vehicle vehicle;
-
 }

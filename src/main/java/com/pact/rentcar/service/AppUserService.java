@@ -35,4 +35,5 @@ public class AppUserService {
 
         return Optional.of(appUserRepository.save(appUser));
     }
+
 }

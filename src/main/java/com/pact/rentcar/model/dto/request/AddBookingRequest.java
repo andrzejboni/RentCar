@@ -18,20 +18,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class AddBookingRequest {
 
-//    private Timestamp recipeDate;
-//    private Timestamp returnDate;
-//    private Double totalCost;
-//
-//    AppUser appUser; // appUserID
-//    Location location; // locationID//TODO Zmodyfikować aby wysyłal także lokalizacje i Vehicle!
-//    Vehicle vehicle;    // vehicleID
-
 
     private Date recipeDate;
     private Date  returnDate;
     private Double  totalCost;
 
     private AppUser  appUser; // appUserID
-    private Location  location; // locationID//TODO Zmodyfikować aby wysyłal także lokalizacje i Vehicle!
+    private Location  location; // locationID
     private Vehicle  vehicle;    // vehicleID
 }

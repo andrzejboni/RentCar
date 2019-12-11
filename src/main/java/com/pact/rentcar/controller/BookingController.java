@@ -48,9 +48,8 @@ public class BookingController {
         return "user/booking";
     }
 
-    @PostMapping("/user/booking/{vehicleId}")
-    public String sendBooking(Model model, @PathVariable(name = "vehicleId") Long id, AddBookingRequest request) {
-
+    @PostMapping(path = "/user/booking/{vehicleId}")
+    public String sendBooking(Model model, @PathVariable(name = "vehicleId") Long id,  AddBookingRequest request) {
         Optional<Booking> bookingOptional = bookingService.addBooking(request);
         if (bookingOptional.isPresent()) {
             return "redirect:/user/profile";
@@ -59,21 +58,12 @@ public class BookingController {
         model.addAttribute("message", "Unable to book!");
         model.addAttribute("formObject", request);
 
-        return "user/profile";
+        return "index";
     }
 
 
-//    @GetMapping(path = "/adminPanel")
 
-    @GetMapping(path = "/profile") // FIXME przesnieśc do klasy ProfileController?
-    public String getAllUserBookings(Model model) {
-        List<Booking> bookingsList = bookingService.getAllBookings();  // FIXME tutaj powinna być metoda getAllBookingsByAppUserID() !!!
 
-        model.addAttribute("bookings", bookingsList);
-
-//        return "admin/adminPanel";
-        return "user/booking";
-    }
 
 
 }
