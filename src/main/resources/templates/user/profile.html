@@ -13,6 +13,8 @@
 <th:block th:include="template :: messageBox"/>
 <h2>Profile:</h2>
 
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span></div>
 
 <div class="container">
     <h4>Your bookings:</h4>
@@ -31,6 +33,7 @@
         <div class="col-md-2" th:text="${booking.recipeDate}"></div>
         <div class="col-md-2" th:text="${booking.returnDate}"></div>
         <div class="col-md-2" th:text="${booking.totalCost}"></div>
+
     </div>
 
     <br>

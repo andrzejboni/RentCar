@@ -1,17 +1,18 @@
 package com.pact.rentcar.controller;
 
+import com.pact.rentcar.component.IAuthenticationFacade;
 import com.pact.rentcar.model.AppUser;
 import com.pact.rentcar.model.Booking;
 import com.pact.rentcar.service.AppUserAuthenticationService;
 import com.pact.rentcar.service.AppUserService;
 import com.pact.rentcar.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,33 +35,35 @@ public class AppUserController {
     @Autowired
     AppUserService appUserService;
 
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
+
+
     @ModelAttribute("loggedIn")
     public boolean getIsLoggedIn() {
         return appUserAuthenticationService.getLoggedInUser().isPresent();
     }
 
+    @GetMapping(path = "/profile")
+    public String getAllUserBookings(Model model) {
+
+
+        List<Booking> bookingsList = bookingService.findAllBookingsByUsername();
+        model.addAttribute("bookings", bookingsList);
+
+        return "user/profile";
+    }
+
+
 
 //    @GetMapping(path = "/profile")
-//    public String getAllUserBookings(Model model) {
-//
-//        AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // pobieram ID zalogowanego użytkownika
-//
-//        List<Booking> bookingsList = bookingService.findAllByAppUserId(appUser.getId());
+//    public String getAllBookings(Model model) {
+//        List<Booking> bookingsList = bookingService.findAllBookings();
 //
 //        model.addAttribute("bookings", bookingsList);
 //
 //        return "user/profile";
 //    }
-
-
-    @GetMapping(path = "/profile")
-    public String getAllBookings(Model model) {
-        List<Booking> bookingsList = bookingService.findAllBookings();
-
-        model.addAttribute("bookings", bookingsList);
-
-        return "user/profile";
-    }
 
 
 }

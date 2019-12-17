@@ -8,6 +8,9 @@ import com.pact.rentcar.repository.BookingRepository;
 import com.pact.rentcar.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -40,57 +43,28 @@ public class BookingService {
     }
 
 
-    public List<Booking> findAllByAppUserId(Long AppUserID) { // FIXME to moze nie zadziałać
-        List<Booking> getAllBookings = bookingRepository.findAll();
-        List<Booking> usersBookings = new ArrayList<>();
+    public List<Booking> findAllBookingsByUsername() {
 
-        for (Booking p : getAllBookings) {
-            if (p.getAppUser().getId().equals(AppUserID)) {
-                usersBookings.add(p);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName(); // Pobieram username zalogowanego użytkownika
+
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+
+        List<Booking> allBookings = bookingRepository.findAll();
+        List<Booking> userBookings = new ArrayList<>();
+
+        for (Booking p : allBookings) {
+            if ((p.getAppUser().getUsername()).equals(currentPrincipalName)) {
+                userBookings.add(p);
 //                break;
             }
         }
 
-        return usersBookings;
+        return userBookings;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-//    public Optional<UserCart> addPizzaToCart(Long pizzaId) {
-//        Optional<AppUser> loggedInUser = appUserAuthenticationService.getLoggedInUser();
-//        if (!loggedInUser.isPresent()) {
-//            return Optional.empty();
-//        }
-//        Optional<Pizza> optionalPizza = pizzaService.getPizzaWithId(pizzaId);
-//        if (!optionalPizza.isPresent()) {
-//            return Optional.empty();
-//        }
-//
-//        AppUser appUser = loggedInUser.get();
-//        Pizza pizza = optionalPizza.get();
-//
-//        UserCart cart = appUser.getUserCart();
-//        CartOrder order = new CartOrder();
-//        order.setPizza(pizza);
-//        order.setQuantity(1);
-//
-//        order = cartOrderRepository.save(order);
-//
-//        cart.getOrders().add(order);
-//
-//        cart = userCartRepository.save(cart);
-//
-//        return Optional.of(cart);
-//    }
 
 
 }
