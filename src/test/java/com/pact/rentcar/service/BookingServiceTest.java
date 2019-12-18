@@ -31,15 +31,13 @@ public class BookingServiceTest {
     @Autowired
     private BookingService bookingService;
 
-//
 //    @Test
-//    public void findAllByAppUserIdTest() {
-//
-//
+//    public void findAllByAppUserIdTest() { // Metoda pobiera username zalogowanego uzytkownika, metoda nie do wytestowania
 //
 //        List<Booking> usersBookings = bookingService.findAllBookingsByUsername();
 //        assertThat(usersBookings.get(0).getLocation().getId()).isEqualTo(locationID);
 //    }
+
 
 
 

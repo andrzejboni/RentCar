@@ -22,7 +22,7 @@ public class BookingService {
     private BookingRepository bookingRepository;
 
     public Optional<Booking> addBooking(AddBookingRequest addBookingRequest) {
-        Optional<Booking> optionalBooking = bookingRepository.findByVehicle(addBookingRequest.getVehicle());// FIXME
+        Optional<Booking> optionalBooking = bookingRepository.findByVehicle(addBookingRequest.getVehicle());// Sprawdzam czy ten samochod juz jest wypozyczony
         if (!optionalBooking.isPresent()) {
             Booking booking = new Booking();
 
@@ -63,6 +63,7 @@ public class BookingService {
 
         return userBookings;
     }
+
 
 
 

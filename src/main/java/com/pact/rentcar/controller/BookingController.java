@@ -1,10 +1,10 @@
 package com.pact.rentcar.controller;
-
 import com.pact.rentcar.model.Booking;
 import com.pact.rentcar.model.Vehicle;
 import com.pact.rentcar.model.VehicleParameters;
+import com.pact.rentcar.model.VehicleStatus;
 import com.pact.rentcar.model.dto.request.AddBookingRequest;
-
+import com.pact.rentcar.repository.VehicleStatusRepository;
 import com.pact.rentcar.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,12 +28,13 @@ public class BookingController {
     private AppUserAuthenticationService appUserAuthenticationService;
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private VehicleStatusService vehicleStatusService;
 
     @ModelAttribute("loggedIn")
     public boolean getIsLoggedIn() {
         return appUserAuthenticationService.getLoggedInUser().isPresent();
     }
-
 
     @GetMapping(path = "/user/booking/{vehicleId}")
     public String getBookedVehicle(Model model, @PathVariable(name = "vehicleId") Long id) {
@@ -51,11 +52,9 @@ public class BookingController {
     @PostMapping(path = "/user/booking/{vehicleId}")
     public String sendBooking(Model model, @PathVariable(name = "vehicleId") Long id,  AddBookingRequest request) {
         Optional<Booking> bookingOptional = bookingService.addBooking(request);
-        if (bookingOptional.isPresent()) {
-            return "redirect:/user/profile";
-        }
 
-        model.addAttribute("message", "Unable to book!");
+        vehicleStatusService.updateVehicleStatus(id,false); // Aktualizje status pojazdu po zabookowaniu
+
         model.addAttribute("formObject", request);
 
         return "index";

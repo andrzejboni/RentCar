@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ControllerTest {
+public class AdminControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -39,7 +39,9 @@ public class ControllerTest {
 //                .andExpect(status().isOk())
 //                .andExpect(content().string(containsString("Hello!")));
 //    }
-//
+
+
+
 //    @Test
 //    public void shouldReturnExpectedTextFromService() throws Exception {
 //        when(bookingService.getHello()).thenReturn("Mock");

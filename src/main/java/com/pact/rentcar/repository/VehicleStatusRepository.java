@@ -11,4 +11,7 @@ import java.util.Optional;
 @Repository
 public interface VehicleStatusRepository extends JpaRepository<VehicleStatus, Long> {
     Optional<VehicleStatus> findByVehicleStatCode(String vehicleStatCode);
+
+
+
 }
