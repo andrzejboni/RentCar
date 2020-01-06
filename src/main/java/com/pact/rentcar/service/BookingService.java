@@ -48,8 +48,6 @@ public class BookingService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName(); // Pobieram username zalogowanego użytkownika
 
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
 
         List<Booking> allBookings = bookingRepository.findAll();
         List<Booking> userBookings = new ArrayList<>();
@@ -57,7 +55,6 @@ public class BookingService {
         for (Booking p : allBookings) {
             if ((p.getAppUser().getUsername()).equals(currentPrincipalName)) {
                 userBookings.add(p);
-//                break;
             }
         }
 

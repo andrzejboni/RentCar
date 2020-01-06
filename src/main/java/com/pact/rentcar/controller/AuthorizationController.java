@@ -17,7 +17,6 @@ public class AuthorizationController {
     @Autowired
     private AppUserService appUserService;
 
-
     @GetMapping("/login")
     public String getLoginPage() {
         return "authorization/login"; // 03/14:44

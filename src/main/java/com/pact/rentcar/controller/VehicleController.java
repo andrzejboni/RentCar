@@ -27,7 +27,7 @@ public class VehicleController {
     @Autowired
     private AppUserAuthenticationService appUserAuthenticationService;
 
-    @ModelAttribute("loggedIn")
+    @ModelAttribute("loggedIn")       // TODO przenieść do appUserController
     public boolean getIsLoggedIn() {
         return appUserAuthenticationService.getLoggedInUser().isPresent();
     }

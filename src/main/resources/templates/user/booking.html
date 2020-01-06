@@ -11,6 +11,21 @@
 <th:block th:include="template :: navigator"/>
 <th:block th:include="template :: messageBox"/>
 <h2>Booking</h2>
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span></div>
+
+<div class="container">
+    <h2>Congratulations on your choice!</h2>
+    <div class="row header">
+        <div class="col-1"><b>Id</b></div>
+        <div class="col-1"><b>Id</b></div>
+        <div class="col-1"><b>Id</b></div>
+    </div>
+    <div class="row table-row" th:each="appUser,i : ${appUsers}">
+        <div class="col-md-1" th:text="${appUser.id}"></div>
+        <div class="col-md-2" th:text="${appUser.phone}"></div>
+    </div>
+</div>
 <div class="container">
     <h2>Congratulations on your choice!</h2>
     <div class="row header">
@@ -68,8 +83,7 @@
         <form th:href="@{/user/booking/}" method="post" th:object="${formObject}">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" th:field="*{appUser}"
+                                <input type="hidden" class="form-control" name="appUser" id="appUser" th:value="${appUsers.id}"
                                        aria-describedby="appUserHelp"
                                        placeholder="AppUser">
                                 <div class="invalid-feedback">
@@ -77,8 +91,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="vehicle">Vehicle</label>
-                                <input type="text" class="form-control" name="vehicle" id="vehicle" th:field="*{vehicle}"
+                                <input type="hidden" class="form-control" name="vehicle" id="vehicle" th:value="${vehicles.getId()}"
                                        aria-describedby="vehicleHelp"
                                        placeholder="Vehicle">
 
@@ -104,19 +117,19 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="location">Location</label>
-                    <input type="text" class="form-control" name="location" id="location" th:field="*{location}"
+                    <input type="hidden" class="form-control" name="location" id="location" th:value="${vehicles.getLocation().getId()}"
                            aria-describedby="locationHelp"
                            placeholder="AppUser">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="totalCost"><b>Total Cost</b></label>
-                    <input type="number" class="form-control" name="totalCost" id="totalCost" th:field="*{totalCost}"
+                    <input type="number" class="form-control" name="totalCost" id="totalCost" th:value="${152}"
                            aria-describedby="totalCostHelp"
                            placeholder="totalCost">
                     <small id="totalCostHelp" class="form-text text-muted">Number of days * daily fee</small>
                 </div>
             </div>
+
 
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Confirm booking</button>

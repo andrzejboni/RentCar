@@ -1,8 +1,6 @@
 package com.pact.rentcar.controller;
-import com.pact.rentcar.model.Booking;
-import com.pact.rentcar.model.Vehicle;
-import com.pact.rentcar.model.VehicleParameters;
-import com.pact.rentcar.model.VehicleStatus;
+
+import com.pact.rentcar.model.*;
 import com.pact.rentcar.model.dto.request.AddBookingRequest;
 import com.pact.rentcar.repository.VehicleStatusRepository;
 import com.pact.rentcar.service.*;
@@ -31,6 +29,7 @@ public class BookingController {
     @Autowired
     private VehicleStatusService vehicleStatusService;
 
+
     @ModelAttribute("loggedIn")
     public boolean getIsLoggedIn() {
         return appUserAuthenticationService.getLoggedInUser().isPresent();
@@ -46,23 +45,25 @@ public class BookingController {
         VehicleParameters vehicleParam = vehicleParametersService.getVehicleParametersByID(id);
         model.addAttribute("vehicleParameters", vehicleParam);
 
+        // UWAGA
+        AppUser appUser = appUserService.findUserByUsername(appUserService.getLoggedUsername()); // pobieram ID zalogowanego uzytkownika do przypisanego bookowania.
+        model.addAttribute("appUsers", appUser);
+        //
+
         return "user/booking";
     }
 
+
     @PostMapping(path = "/user/booking/{vehicleId}")
-    public String sendBooking(Model model, @PathVariable(name = "vehicleId") Long id,  AddBookingRequest request) {
+    public String sendBooking(Model model, @PathVariable(name = "vehicleId") Long id, AddBookingRequest request) {
         Optional<Booking> bookingOptional = bookingService.addBooking(request);
 
-        vehicleStatusService.updateVehicleStatus(id,false); // Aktualizje status pojazdu po zabookowaniu
+        vehicleStatusService.updateVehicleStatus(id, false); // Aktualizje status pojazdu po zabookowaniu
 
         model.addAttribute("formObject", request);
 
         return "index";
     }
-
-
-
-
 
 
 }

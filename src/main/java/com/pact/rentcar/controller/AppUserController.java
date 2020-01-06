@@ -38,9 +38,9 @@ public class AppUserController {
     @Autowired
     private IAuthenticationFacade authenticationFacade;
 
-
     @ModelAttribute("loggedIn")
     public boolean getIsLoggedIn() {
+
         return appUserAuthenticationService.getLoggedInUser().isPresent();
     }
 
@@ -59,6 +59,7 @@ public class AppUserController {
 
         return "user/profile";
     }
+
 
 //    @GetMapping(path = "/profile")
 //    public String getAllBookings(Model model) {
