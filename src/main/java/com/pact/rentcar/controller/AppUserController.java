@@ -47,14 +47,18 @@ public class AppUserController {
     @GetMapping(path = "/profile")
     public String getAllUserBookings(Model model) {
 
-
         List<Booking> bookingsList = bookingService.findAllBookingsByUsername();
+
+        if (bookingsList.isEmpty()) {
+
+            return "redirect:/contact";
+        }
+
+
         model.addAttribute("bookings", bookingsList);
 
         return "user/profile";
     }
-
-
 
 //    @GetMapping(path = "/profile")
 //    public String getAllBookings(Model model) {
