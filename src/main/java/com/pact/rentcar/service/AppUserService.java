@@ -31,7 +31,7 @@ public class AppUserService {
             return currentUserName;
         }
 
-        return null;
+        return null;  // TODO OGARNĄC TO @@@@@@@@@@@@@
     }
 
 
@@ -73,7 +73,7 @@ public class AppUserService {
                 return appUserList.get(i);
             }
         }
-        return null;
+        return null; // TODO OGARNĄC TO @@@@@@@@@@@@@
     }
 
 
